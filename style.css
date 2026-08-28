@@ -3072,3 +3072,72 @@ button:active {
         font-size: 16px;
     }
 }
+/* PAGE TRANSITIONS */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: flex;
+}
+
+
+/* Page 3 - soft surprise reveal */
+
+#page3.active {
+    animation: surpriseReveal 0.8s ease forwards;
+}
+
+@keyframes surpriseReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Page 5 - scrapbook slide reveal */
+
+#page5.active {
+    animation: scrapbookReveal 0.9s ease forwards;
+}
+
+@keyframes scrapbookReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* PAGE 4 - LETTER REVEAL ANIMATION */
+
+#page4.active {
+    animation: letterReveal 1s ease forwards;
+}
+
+@keyframes letterReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.9);
+    }
+
+    60% {
+        opacity: 0.7;
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
