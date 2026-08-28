@@ -1,6 +1,4 @@
-/* =========================================================
-   RESET
-   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
 
 * {
     margin: 0;
@@ -8,3136 +6,867 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-
 html {
     scroll-behavior: smooth;
 }
 
-
-/* =========================================================
-   BODY
-   ========================================================= */
-
 body {
-    font-family: Arial, sans-serif;
-
-    color: white;
-
-    width: 100%;
-    min-height: 100vh;
-
-    overflow: hidden;
-
-    /*
-    =========================================================
-    MAIN BACKGROUND PHOTO
-
-    Put your photo in the same folder:
-
-        index.html
-        style.css
-        script.js
-        my-photo.jpg
-
-    =========================================================
-    */
-
-    background-image:
-        linear-gradient(
-            rgba(15, 5, 10, 0.48),
-            rgba(15, 5, 10, 0.58)
-        ),
-        url("my-photo.jpg");
-
-    background-size: cover;
-
-    background-position: center center;
-
-    background-repeat: no-repeat;
-
-    background-attachment: fixed;
-
-    background-color: #16080d;
+    background: #1b0b10;
+    color: #fff7f4;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
 }
 
-
-/* =========================================================
-   MAIN CONTAINER
-   ========================================================= */
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
 
 .container {
     width: 100%;
     min-height: 100vh;
-
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    background: transparent;
-
-    overflow: hidden;
 }
 
-
-/* =========================================================
-   PAGE SYSTEM
-   ========================================================= */
+/* ================= GENERAL PAGES ================= */
 
 .page {
-    width: 100%;
-    height: 100vh;
-    min-height: 100vh;
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
     display: none;
-
-    justify-content: center;
-    align-items: center;
-
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
     opacity: 0;
-
-    transform: scale(0.98);
-
-    transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
-
-    background: transparent !important;
-
-    overflow-y: auto;
-    overflow-x: hidden;
+    transform: translateY(20px);
 }
-
-
-/* =========================================================
-   PAGE OVERLAY
-   ========================================================= */
-
-.page::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background: rgba(20, 5, 12, 0.18);
-
-    z-index: 0;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   ACTIVE PAGE
-   ========================================================= */
 
 .page.active {
     display: flex;
-
     opacity: 1;
-
-    transform: scale(1);
+    transform: translateY(0);
+    animation: pageAppear 0.8s ease forwards;
 }
 
-
-/* =========================================================
-   PAGE DIRECT CHILDREN
-   ========================================================= */
-
-.page > * {
-    position: relative;
-
-    z-index: 1;
-}
-
-
-/* =========================================================
-   SMALL TEXT
-   ========================================================= */
-
-.small-text {
-    color: #ffd1dc;
-
-    font-size: 14px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 20px;
-
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-
-/* =========================================================
-   MAIN HEADINGS
-   ========================================================= */
-
-h1 {
-    font-family: Georgia, serif;
-
-    font-size: 42px;
-
-    line-height: 1.2;
-
-    margin-bottom: 18px;
-
-    text-shadow:
-        0 3px 12px rgba(0, 0, 0, 0.7);
-}
-
-
-/* =========================================================
-   SUBTITLE
-   ========================================================= */
-
-.subtitle {
-    color: #ffe4eb;
-
-    font-size: 16px;
-
-    margin-bottom: 45px;
-
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-
-/* =========================================================
-   PAGE 1
-   ========================================================= */
-
-.welcome-page {
-    width: 100%;
-
-    max-width: 900px;
-
-    padding: 30px;
-
-    text-align: center;
-
-    position: relative;
-
-    z-index: 3;
-}
-
-
-/* =========================================================
-   PAGE 1 HEART CONTAINER
-   ========================================================= */
-
-/*
-IMPORTANT:
-
-The hearts are positioned relative to the ENTIRE PAGE,
-not relative to the text or envelope.
-
-This prevents them from moving into the middle
-of the content.
-*/
-
-.hearts {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   PAGE 1 HEARTS
-   ========================================================= */
-
-.hearts span {
-    position: absolute;
-
-    display: block;
-
-    color: #ff7894;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    opacity: 0.78;
-
-    text-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.55);
-
-    animation:
-        heartFloat 5s ease-in-out infinite;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   HEART 1 — TOP LEFT
-   ========================================================= */
-
-.hearts span:nth-child(1) {
-    left: 12%;
-
-    top: 17%;
-
-    animation-delay: 0s;
-
-    transform: rotate(-8deg);
-}
-
-
-/* =========================================================
-   HEART 2 — TOP RIGHT
-   ========================================================= */
-
-.hearts span:nth-child(2) {
-    right: 12%;
-
-    top: 21%;
-
-    animation-delay: 1.2s;
-
-    transform: rotate(8deg);
-}
-
-
-/* =========================================================
-   HEART 3 — BOTTOM LEFT
-   ========================================================= */
-
-.hearts span:nth-child(3) {
-    left: 16%;
-
-    bottom: 17%;
-
-    animation-delay: 2.3s;
-
-    transform: rotate(-8deg);
-}
-
-
-/* =========================================================
-   HEART 4 — BOTTOM RIGHT
-   ========================================================= */
-
-.hearts span:nth-child(4) {
-    right: 15%;
-
-    bottom: 19%;
-
-    animation-delay: 3.4s;
-
-    transform: rotate(8deg);
-}
-
-
-/* =========================================================
-   HEART ANIMATION
-   ========================================================= */
-
-@keyframes heartFloat {
-
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(-5deg);
-    }
-
-    50% {
-        transform:
-            translateY(-15px)
-            rotate(5deg);
-    }
-}
-
-
-/* =========================================================
-   KEEP PAGE 1 CONTENT ABOVE HEARTS
-   ========================================================= */
-
-.welcome-page > * {
-    position: relative;
-
-    z-index: 3;
-}
-
-
-/* =========================================================
-   SMALL ENVELOPE
-   ========================================================= */
-
-.envelope {
-    width: 250px;
-
-    height: 160px;
-
-    margin: 30px auto;
-
-    position: relative;
-
-    cursor: pointer;
-
-    perspective: 1000px;
-
-    isolation: isolate;
-
-    transition:
-        transform 0.4s ease;
-
-    filter:
-        drop-shadow(
-            0 15px 25px rgba(0, 0, 0, 0.4)
-        );
-}
-
-
-.envelope:hover {
-    transform: scale(1.05);
-}
-
-
-/* =========================================================
-   SMALL ENVELOPE BODY
-   ========================================================= */
-
-.envelope-body {
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 250px;
-    height: 150px;
-
-    background: #e75b75;
-
-    border-radius:
-        0 0 12px 12px;
-
-    z-index: 3;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   ENVELOPE LOWER FOLDS
-   ========================================================= */
-
-.envelope-body::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left:
-        125px solid #d94e69;
-
-    border-top:
-        75px solid transparent;
-
-    z-index: 1;
-}
-
-
-.envelope-body::after {
-    content: "";
-
-    position: absolute;
-
-    right: 0;
-    bottom: 0;
-
-    width: 0;
-    height: 0;
-
-    border-right:
-        125px solid #d94e69;
-
-    border-top:
-        75px solid transparent;
-
-    z-index: 1;
-}
-
-
-/* =========================================================
-   SMALL ENVELOPE FLAP
-   ========================================================= */
-
-.flap {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 250px;
-    height: 85px;
-
-    background: #f0788f;
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
-
-    -webkit-clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
-
-    transform-origin:
-        top center;
-
-    z-index: 6;
-
-    transition:
-        transform 0.7s ease,
-        opacity 0.4s ease;
-
-    /*
-    Hides the reverse side of flap.
-    */
-
-    backface-visibility: hidden;
-
-    -webkit-backface-visibility: hidden;
-}
-
-
-/* =========================================================
-   SMALL LETTER
-   ========================================================= */
-
-.letter {
-    position: absolute;
-
-    width: 210px;
-
-    height: 125px;
-
-    left: 20px;
-
-    bottom: 15px;
-
-    background: #fff8f3;
-
-    color: #a34a5b;
-
-    border-radius: 8px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-family: Georgia, serif;
-
-    font-size: 22px;
-
-    text-align: center;
-
-    z-index: 2;
-
-    transition:
-        transform 0.8s ease,
-        opacity 0.5s ease;
-
-    box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-
-/* =========================================================
-   SMALL ENVELOPE HEART
-   ========================================================= */
-
-.heart {
-    position: absolute;
-
-    left: 105px;
-
-    top: 55px;
-
-    color: white;
-
-    font-size: 35px;
-
-    line-height: 1;
-
-    z-index: 7;
-
-    transition:
-        opacity 0.3s ease;
-}
-
-
-/* =========================================================
-   SMALL ENVELOPE OPEN
-   ========================================================= */
-
-.envelope.open .flap {
-    transform:
-        rotateX(180deg);
-
-    /*
-    Move behind letter/body.
-    */
-
-    z-index: 1;
-
-    opacity: 0.95;
-}
-
-
-.envelope.open .letter {
-    transform:
-        translateY(-105px);
-
-    z-index: 8;
-}
-
-
-.envelope.open .heart {
-    opacity: 0;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-button {
-    margin-top: 55px;
-
-    padding: 15px 28px;
-
-    border: none;
-
-    border-radius: 30px;
-
-    background: #e75b75;
-
-    color: white;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-
-button:hover {
-    transform: scale(1.08);
-
-    background: #ff7894;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-
-button:active {
-    transform: scale(0.97);
-}
-
-
-.tap-text {
-    margin-top: 15px;
-
-    font-size: 13px;
-
-    color: #f3cbd4;
-
-    text-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.7);
-}
-
-
-/* =========================================================
-   PAGE 2
-   ========================================================= */
-
-.birthday-page {
-    width: 100%;
-
-    max-width: 650px;
-
-    padding: 40px 30px;
-
-    text-align: center;
-
-    animation:
-        birthdayAppear 1s ease;
-}
-
-
-.cake {
-    font-size: 90px;
-
-    margin-bottom: 20px;
-
-    animation:
-        bounce 2s infinite ease-in-out;
-
-    filter:
-        drop-shadow(
-            0 8px 12px rgba(0, 0, 0, 0.5)
-        );
-}
-
-
-.birthday-page h1 {
-    font-size: 52px;
-
-    color: white;
-
-    margin-bottom: 25px;
-}
-
-
-.birthday-page h1 span {
-    color: #ffb3c3;
-}
-
-
-.birthday-text {
-    color: #ffe0e7;
-
-    font-size: 18px;
-
-    line-height: 1.8;
-
-    max-width: 600px;
-
-    margin: 0 auto;
-
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-
-/* =========================================================
-   PAGE 2 ANIMATIONS
-   ========================================================= */
-
-@keyframes birthdayAppear {
-
+@keyframes pageAppear {
     from {
         opacity: 0;
-
-        transform:
-            translateY(30px);
+        transform: translateY(25px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
+/* ================= BUTTON ================= */
 
-@keyframes bounce {
+.main-btn {
+    border: none;
+    padding: 16px 30px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f07b96, #d94d70);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    box-shadow: 0 12px 30px rgba(217, 77, 112, 0.25);
+    transition: 0.3s ease;
+}
 
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(-5deg);
+.main-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 16px 35px rgba(217, 77, 112, 0.4);
+}
+
+.eyebrow {
+    color: #f2a7b7;
+    letter-spacing: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* ================= PAGE 1 ================= */
+
+#page1 {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(157, 53, 80, 0.25), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(190, 94, 118, 0.16), transparent 30%),
+        #1b0b10;
+}
+
+.welcome-content {
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 7vw, 85px);
+    line-height: 0.95;
+    margin-bottom: 20px;
+}
+
+.welcome-content h1 span {
+    display: block;
+    color: #ef8da5;
+    font-style: italic;
+}
+
+.subtitle {
+    color: #d9bfc5;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.floating-hearts span {
+    position: absolute;
+    color: #e35b7b;
+    opacity: 0.45;
+    animation: floatHeart 5s ease-in-out infinite;
+}
+
+.floating-hearts span:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    font-size: 30px;
+}
+
+.floating-hearts span:nth-child(2) {
+    top: 20%;
+    right: 12%;
+    font-size: 22px;
+    animation-delay: 1s;
+}
+
+.floating-hearts span:nth-child(3) {
+    bottom: 12%;
+    left: 15%;
+    font-size: 25px;
+    animation-delay: 2s;
+}
+
+.floating-hearts span:nth-child(4) {
+    bottom: 20%;
+    right: 10%;
+    font-size: 34px;
+    animation-delay: 0.5s;
+}
+
+.floating-hearts span:nth-child(5) {
+    top: 45%;
+    left: 6%;
+    font-size: 18px;
+    animation-delay: 1.5s;
+}
+
+@keyframes floatHeart {
+    0%, 100% {
+        transform: translateY(0);
     }
 
     50% {
-        transform:
-            translateY(-15px)
-            rotate(5deg);
+        transform: translateY(-18px);
     }
 }
 
 
-/* =========================================================
-   PAGE 3
-   ========================================================= */
+/* ================= SMALL ENVELOPE ================= */
 
-.surprise-page {
+.envelope-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 30px;
+}
+
+.envelope {
+    width: 310px;
+    height: 205px;
+    position: relative;
+    cursor: pointer;
+    filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.3));
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #d95473;
+    border-radius: 0 0 16px 16px;
+}
+
+.envelope-left,
+.envelope-right,
+.envelope-bottom {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.envelope-left {
+    border-top: 102px solid transparent;
+    border-bottom: 102px solid transparent;
+    border-left: 155px solid #e46782;
+    left: 0;
+}
+
+.envelope-right {
+    border-top: 102px solid transparent;
+    border-bottom: 102px solid transparent;
+    border-right: 155px solid #c94767;
+    right: 0;
+}
+
+.envelope-bottom {
+    bottom: 0;
+    border-left: 155px solid transparent;
+    border-right: 155px solid transparent;
+    border-bottom: 105px solid #dc5d79;
+    transform: rotate(180deg);
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 155px solid transparent;
+    border-right: 155px solid transparent;
+    border-top: 110px solid #ef8298;
+    transform-origin: top;
+    transition: 0.8s ease;
+    z-index: 5;
+}
+
+.letter {
+    position: absolute;
+    width: 235px;
+    height: 155px;
+    background: #fff9f3;
+    color: #70384a;
+    left: 37px;
+    top: 22px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: 0.8s ease;
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+}
+
+.heart-seal {
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    top: 80px;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 34px;
+    transition: 0.5s ease;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .letter {
+    transform: translateY(-85px);
+}
+
+.envelope.open .heart-seal {
+    opacity: 0;
+}
+
+.tap-text {
+    color: #ad8b94;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+
+/* ================= PAGE 2 ================= */
+
+#page2 {
+    align-items: center;
+    justify-content: center;
+    padding: 50px 8%;
+    background: linear-gradient(135deg, #240e16, #35131e);
+}
+
+.birthday-layout {
     width: 100%;
+    max-width: 1250px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    align-items: center;
+    gap: 35px;
+}
 
-    max-width: 800px;
-
-    padding: 30px;
-
+.birthday-content {
     text-align: center;
 }
 
+.birthday-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1;
+    margin-bottom: 25px;
+}
 
-/* =========================================================
-   BIG ENVELOPE
-   ========================================================= */
+.birthday-content h1 span {
+    display: block;
+    color: #ef8da5;
+    font-size: 0.55em;
+    margin-top: 10px;
+}
+
+.cake {
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: cakeBounce 2s ease-in-out infinite;
+}
+
+@keyframes cakeBounce {
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+.birthday-text {
+    color: #ead8dc;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 28px;
+}
+
+.birthday-photo {
+    height: 480px;
+    overflow: hidden;
+    border-radius: 170px 170px 20px 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.birthday-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-left {
+    transform: rotate(-4deg);
+}
+
+.photo-right {
+    transform: rotate(4deg);
+}
+
+
+/* ================= PAGE 3 ================= */
+
+#page3 {
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at center, rgba(170, 58, 91, 0.2), transparent 40%),
+        #18090f;
+}
+
+.surprise-content {
+    text-align: center;
+}
+
+.surprise-heading {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 6vw, 75px);
+    margin-bottom: 8px;
+}
+
+.surprise-subtext {
+    color: #cbaeb5;
+    margin-bottom: 30px;
+}
+
+
+/* ================= BIG ENVELOPE ================= */
+
+.big-envelope-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 30px;
+}
 
 .big-envelope {
-    width: 320px;
-
-    height: 210px;
-
-    margin: 30px auto;
-
+    width: 420px;
+    height: 280px;
     position: relative;
-
     cursor: pointer;
-
-    perspective: 1000px;
-
-    isolation: isolate;
-
-    transition:
-        transform 0.4s ease;
-
-    filter:
-        drop-shadow(
-            0 15px 30px rgba(0, 0, 0, 0.45)
-        );
+    filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.35));
 }
-
-
-.big-envelope:hover {
-    transform: scale(1.05);
-}
-
-
-/* =========================================================
-   BIG ENVELOPE BODY
-   ========================================================= */
 
 .big-envelope-back {
     position: absolute;
+    inset: 0;
+    background: #c84d6d;
+    border-radius: 0 0 20px 20px;
+}
 
-    left: 0;
-    bottom: 0;
-
-    width: 320px;
-
-    height: 200px;
-
-    background: #e75b75;
-
-    border-radius:
-        0 0 15px 15px;
-
+.big-envelope-left,
+.big-envelope-right,
+.big-envelope-bottom {
+    position: absolute;
+    width: 0;
+    height: 0;
     z-index: 3;
-
-    overflow: hidden;
 }
 
-
-.big-envelope-back::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left:
-        160px solid #d94e69;
-
-    border-top:
-        100px solid transparent;
+.big-envelope-left {
+    border-top: 140px solid transparent;
+    border-bottom: 140px solid transparent;
+    border-left: 210px solid #dc6380;
 }
 
-
-.big-envelope-back::after {
-    content: "";
-
-    position: absolute;
-
+.big-envelope-right {
+    border-top: 140px solid transparent;
+    border-bottom: 140px solid transparent;
+    border-right: 210px solid #b93f61;
     right: 0;
-    bottom: 0;
-
-    width: 0;
-    height: 0;
-
-    border-right:
-        160px solid #d94e69;
-
-    border-top:
-        100px solid transparent;
 }
 
-
-/* =========================================================
-   BIG ENVELOPE FLAP
-   ========================================================= */
+.big-envelope-bottom {
+    bottom: 0;
+    border-left: 210px solid transparent;
+    border-right: 210px solid transparent;
+    border-bottom: 140px solid #d55473;
+    transform: rotate(180deg);
+}
 
 .big-envelope-flap {
     position: absolute;
-
     top: 0;
-    left: 0;
-
-    width: 320px;
-
-    height: 110px;
-
-    background: #f0788f;
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
-
-    -webkit-clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
-
-    transform-origin:
-        top center;
-
-    z-index: 6;
-
-    transition:
-        transform 0.8s ease,
-        opacity 0.4s ease;
-
-    backface-visibility: hidden;
-
-    -webkit-backface-visibility: hidden;
+    width: 0;
+    height: 0;
+    border-left: 210px solid transparent;
+    border-right: 210px solid transparent;
+    border-top: 145px solid #ed8298;
+    transform-origin: top;
+    transition: 0.8s ease;
+    z-index: 5;
 }
-
-
-/* =========================================================
-   BIG LETTER
-   ========================================================= */
 
 .big-letter {
     position: absolute;
-
-    width: 270px;
-
-    height: 160px;
-
-    left: 25px;
-
-    bottom: 20px;
-
-    background: #fff8f3;
-
-    color: #a34a5b;
-
-    border-radius: 10px;
-
+    width: 320px;
+    height: 210px;
+    left: 50px;
+    top: 30px;
+    background: #fffaf4;
+    color: #6f3545;
     z-index: 2;
-
+    border-radius: 8px;
     display: flex;
-
-    justify-content: center;
-
     align-items: center;
-
-    text-align: center;
-
-    padding: 20px;
-
-    font-family: Georgia, serif;
-
-    font-size: 24px;
-
-    line-height: 1.5;
-
-    transition:
-        transform 0.8s ease;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.18);
+    justify-content: center;
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.3;
+    transition: 0.8s ease;
 }
-
-
-/* =========================================================
-   BIG ENVELOPE HEART
-   ========================================================= */
 
 .heart-sticker {
     position: absolute;
-
-    left: 140px;
-
-    top: 75px;
-
-    font-size: 38px;
-
-    line-height: 1;
-
-    z-index: 7;
-
-    transition:
-        opacity 0.3s ease;
+    left: 50%;
+    top: 105px;
+    transform: translateX(-50%);
+    font-size: 42px;
+    z-index: 6;
+    transition: 0.4s ease;
 }
-
-
-/* =========================================================
-   BIG ENVELOPE OPEN
-   ========================================================= */
 
 .big-envelope.open .big-envelope-flap {
-    transform:
-        rotateX(180deg);
-
+    transform: rotateX(180deg);
     z-index: 1;
-
-    opacity: 0.95;
 }
-
 
 .big-envelope.open .big-letter {
-    transform:
-        translateY(-125px);
-
-    z-index: 8;
+    transform: translateY(-120px);
 }
-
 
 .big-envelope.open .heart-sticker {
     opacity: 0;
 }
 
 
-.open-text {
-    color: #ffe1e8;
+/* ================= PAGE 4 ================= */
 
-    font-size: 16px;
-
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.7);
+#page4 {
+    background: #16090e;
+    padding: 60px 7%;
+    align-items: center;
+    justify-content: center;
 }
-
-
-/* =========================================================
-   PAGE 4
-   ========================================================= */
 
 .letter-page {
     width: 100%;
-
-    max-width: 1100px;
-
-    padding: 30px;
-
+    max-width: 1250px;
     text-align: center;
-
-    position: relative;
-
-    z-index: 2;
 }
 
-
-/* =========================================================
-   BIRTHDAY CARD
-   ========================================================= */
-
-.birthday-card {
-    display: flex;
-
-    flex-direction: row;
-
-    width: 900px;
-
-    max-width: 90vw;
-
-    height: 430px;
-
-    margin: 25px auto;
-
-    background:
-        rgba(183, 24, 36, 0.94);
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    position: relative;
-
-    isolation: isolate;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.45);
-
-    backdrop-filter:
-        blur(5px);
-
-    -webkit-backdrop-filter:
-        blur(5px);
+.letter-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    align-items: start;
+    text-align: left;
 }
 
-
-/* =========================================================
-   LEFT PHOTO AREA
-   ========================================================= */
-
-.photo-side {
-    flex:
-        0 0 42%;
-
-    width: 42%;
-
-    height: 430px;
-
-    min-width: 0;
-
-    min-height: 0;
-
-    padding: 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    position: relative;
-
-    background:
-        rgba(232, 178, 167, 0.95);
-
-    overflow: hidden;
-
-    isolation: isolate;
-
-    z-index: 2;
+.memory-column {
+    position: sticky;
+    top: 30px;
 }
 
+.polaroid {
+    background: #fffaf5;
+    padding: 12px 12px 28px;
+    color: #5c303c;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    margin-bottom: 35px;
+}
 
-/* =========================================================
-   PHOTO FRAME
-   ========================================================= */
-
-.photo-frame {
+.polaroid img {
     width: 100%;
-
-    max-width: 100%;
-
-    height: 100%;
-
-    max-height: 100%;
-
-    min-width: 0;
-
-    min-height: 0;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius: 10px;
-
-    background: #f8e9df;
-
-    transform:
-        rotate(-3deg);
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.25);
-
-    isolation: isolate;
-}
-
-
-/* =========================================================
-   PHOTO
-   ========================================================= */
-
-.photo-frame img {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    display: block;
-
-    width: 100%;
-
-    height: 100%;
-
-    max-width: 100%;
-
-    max-height: 100%;
-
-    min-width: 0;
-
-    min-height: 0;
-
+    height: 280px;
     object-fit: cover;
-
-    object-position: center center;
-
-    border-radius: 10px;
-
-    z-index: 1;
 }
 
-
-.photo-frame > img {
-    width: 100% !important;
-
-    height: 100% !important;
-
-    max-width: 100% !important;
-
-    max-height: 100% !important;
-
-    object-fit: cover !important;
-}
-
-
-/* =========================================================
-   RIGHT MESSAGE AREA
-   ========================================================= */
-
-.message-side {
-    flex:
-        1 1 58%;
-
-    width: 58%;
-
-    height: 430px;
-
-    min-width: 0;
-
-    min-height: 0;
-
-    padding:
-        35px 40px;
-
-    color: white;
-
+.polaroid p {
     text-align: center;
+    font-family: "Playfair Display", serif;
+    margin-top: 12px;
+}
 
-    display: flex;
+.polaroid-one {
+    transform: rotate(-4deg);
+}
 
-    flex-direction: column;
+.polaroid-two {
+    transform: rotate(5deg);
+}
 
-    justify-content: center;
-
-    align-items: center;
-
+.actual-letter {
+    background: #fff8f0;
+    color: #572f39;
+    padding: 50px;
+    border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     position: relative;
-
-    overflow: hidden;
-
-    z-index: 3;
 }
 
+.actual-letter::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(177, 100, 116, 0.3);
+    pointer-events: none;
+}
 
-.message-side h2 {
-    font-family: Georgia, serif;
+.letter-top {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
+.letter-top span {
+    font-size: 35px;
+}
+
+.letter-top h2 {
+    font-family: "Playfair Display", serif;
     font-size: 42px;
-
-    margin-bottom: 20px;
-
-    font-weight: normal;
-
-    text-shadow:
-        0 3px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 8px;
 }
 
-
-.message-side p {
-    width: 100%;
-
-    max-width: 550px;
-
+.actual-letter p {
+    line-height: 1.9;
+    margin-bottom: 25px;
     font-size: 15px;
+}
 
-    line-height: 1.7;
+.song-note {
+    background: #f7dce1;
+    padding: 20px;
+    border-left: 4px solid #d45875;
+    margin-bottom: 25px;
+}
 
-    margin-bottom: 12px;
+.song-note p {
+    margin-bottom: 0;
+}
+
+#nextPageBtn {
+    margin-top: 35px;
 }
 
 
-.message-side .love-text {
-    font-family: Georgia, serif;
+/* ================= PAGE 5 ================= */
 
-    font-size: 20px;
-
-    margin-top: 10px;
+#page5 {
+    align-items: center;
+    justify-content: center;
+    padding: 70px 8%;
+    background:
+        radial-gradient(circle at 10% 90%, rgba(182, 69, 98, 0.18), transparent 25%),
+        #210c13;
 }
-
-
-/* =========================================================
-   PAGE 5
-   ========================================================= */
 
 .love-page {
-    width: 100%;
-
     max-width: 1100px;
-
-    padding: 30px;
-
+    width: 100%;
     text-align: center;
 }
 
-
-/* =========================================================
-   LOVE CARD
-   ========================================================= */
-
-.love-card {
-    width: 100%;
-
-    max-width: 900px;
-
-    min-height: 500px;
-
-    margin: 25px auto;
-
-    display: flex;
-
-    position: relative;
-
-    background:
-        rgba(197, 30, 41, 0.94);
-
-    overflow: hidden;
-
-    border-radius: 15px;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.45);
-
-    backdrop-filter:
-        blur(5px);
-
-    -webkit-backdrop-filter:
-        blur(5px);
+.love-heading {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 6vw, 75px);
+    margin-bottom: 45px;
 }
 
+.love-heading span {
+    display: block;
+    color: #ec809a;
+    font-style: italic;
+}
 
-/* =========================================================
-   LOVE TITLE
-   ========================================================= */
+.love-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    text-align: left;
+    margin-bottom: 35px;
+}
 
-.love-title {
-    width: 35%;
-
+.love-item {
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 180, 195, 0.12);
+    border-radius: 16px;
     display: flex;
-
-    justify-content: center;
-
     align-items: center;
-
-    padding: 30px;
-
-    background:
-        rgba(217, 44, 56, 0.95);
+    gap: 18px;
+    transition: 0.3s ease;
 }
 
-
-.love-title h2 {
-    color: white;
-
-    font-size: 42px;
-
-    line-height: 1.2;
-
-    text-align: left;
-
-    font-family: Arial, sans-serif;
+.love-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
 }
 
-
-/* =========================================================
-   LOVE LIST
-   ========================================================= */
-
-.love-list {
-    width: 65%;
-
-    background:
-        rgba(255, 248, 237, 0.96);
-
-    color: #4a3030;
-
-    padding:
-        30px 40px;
-
-    text-align: left;
-
-    overflow-y: auto;
+.love-item span {
+    color: #ef819a;
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-
-.love-list p {
-    font-size: 15px;
-
+.love-item p {
+    color: #f2e3e6;
     line-height: 1.5;
+    font-size: 14px;
+}
 
-    margin-bottom: 15px;
+.special-love {
+    grid-column: 1 / -1;
+    background: linear-gradient(
+        135deg,
+        rgba(209, 72, 105, 0.25),
+        rgba(255, 255, 255, 0.06)
+    );
 }
 
 
-/* =========================================================
-   PAGE 6
-   ========================================================= */
+/* ================= PAGE 6 ================= */
 
 #page6 {
-    overflow: hidden;
-
-    background:
-        transparent !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
-
 
 .final-page {
     width: 100%;
-
     min-height: 100vh;
-
     position: relative;
-
     display: flex;
-
-    justify-content: center;
-
     align-items: center;
-
-    text-align: center;
-
-    padding: 30px;
-
+    justify-content: center;
     overflow: hidden;
 }
 
-
-.final-content {
-    position: relative;
-
-    z-index: 2;
-
-    max-width: 700px;
-
-    animation:
-        finalAppear 1s ease;
+.final-bg-photo,
+.final-bg-photo img,
+.final-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
+.final-bg-photo img {
+    object-fit: cover;
+}
 
-.final-cake {
-    font-size: 70px;
-
-    animation:
-        bounce 2s infinite ease-in-out;
-
-    filter:
-        drop-shadow(
-            0 8px 12px rgba(0, 0, 0, 0.5)
+.final-overlay {
+    background:
+        linear-gradient(
+            rgba(22, 7, 12, 0.78),
+            rgba(42, 10, 20, 0.88)
         );
 }
 
+.final-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+    width: 90%;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.final-cake {
+    font-size: 70px;
+    margin-bottom: 15px;
+}
 
 .final-content h1 {
-    font-family: Georgia, serif;
-
-    font-size: 65px;
-
-    line-height: 1;
-
-    margin: 15px 0;
-
-    letter-spacing: 3px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(65px, 10vw, 120px);
+    line-height: 0.8;
 }
 
+.final-content h1 span {
+    display: block;
+    color: #f08aa2;
+    margin-top: 20px;
+}
 
 .final-content h2 {
-    color: #ffb0c0;
-
-    font-size: 20px;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 25px;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: #f6cad3;
+    margin: 30px 0;
 }
-
 
 .final-message,
 .final-love {
-    color: #ffe0e7;
-
-    font-size: 17px;
-
-    line-height: 1.7;
-
+    line-height: 1.8;
+    color: #f1dfe2;
     max-width: 600px;
-
-    margin: 15px auto;
-
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.7);
+    margin: 0 auto 18px;
 }
-
 
 .big-love {
-    margin-top: 25px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(35px, 5vw, 60px);
+    margin: 30px 0;
+    color: #fff5f5;
+}
 
-    font-family: Georgia, serif;
-
-    font-size: 32px;
-
-    color: #ffb0c0;
-
-    animation:
-        pulseLove 1.5s infinite ease-in-out;
-
-    text-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.5);
+.replay-btn {
+    font-size: 12px;
 }
 
 
-.final-content button {
-    margin-top: 30px;
-}
-
-
-/* =========================================================
-   FINAL HEARTS
-   ========================================================= */
-
-.final-hearts span {
-    position: absolute;
-
-    font-size: 28px;
-
-    opacity: 0.85;
-
-    animation:
-        floatFinal 4s infinite ease-in-out;
-
-    text-shadow:
-        0 5px 12px rgba(0, 0, 0, 0.5);
-
-    pointer-events: none;
-}
-
-
-.final-hearts span:nth-child(1) {
-    left: 10%;
-    top: 15%;
-}
-
-
-.final-hearts span:nth-child(2) {
-    right: 12%;
-    top: 20%;
-
-    animation-delay: 1s;
-}
-
-
-.final-hearts span:nth-child(3) {
-    left: 15%;
-    bottom: 20%;
-
-    animation-delay: 2s;
-}
-
-
-.final-hearts span:nth-child(4) {
-    right: 15%;
-    bottom: 15%;
-
-    animation-delay: 3s;
-}
-
-
-.final-hearts span:nth-child(5) {
-    left: 50%;
-    top: 8%;
-
-    animation-delay: 1.5s;
-}
-
-
-/* =========================================================
-   CONFETTI
-   ========================================================= */
-
-.confetti-container {
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 1;
-}
-
-
-/* =========================================================
-   FINAL ANIMATIONS
-   ========================================================= */
-
-@keyframes finalAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            scale(0.8);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1);
-    }
-}
-
-
-@keyframes pulseLove {
-
-    0%,
-    100% {
-        transform:
-            scale(1);
-    }
-
-    50% {
-        transform:
-            scale(1.12);
-    }
-}
-
-
-@keyframes floatFinal {
-
-    0%,
-    100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(-25px);
-    }
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
+/* ================= RESPONSIVE ================= */
 
 @media (max-width: 900px) {
 
-    .birthday-card {
-        width: 90vw;
-
-        height: 420px;
+    .birthday-layout {
+        grid-template-columns: 1fr;
     }
 
-
-    .photo-side {
-        width: 42%;
-
-        height: 420px;
-
-        padding: 20px;
+    .birthday-photo {
+        display: none;
     }
 
-
-    .message-side {
-        width: 58%;
-
-        height: 420px;
-
-        padding:
-            30px 25px;
+    .letter-layout {
+        grid-template-columns: 1fr;
     }
 
-
-    .message-side h2 {
-        font-size: 36px;
+    .memory-column {
+        position: static;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
     }
 
-
-    .message-side p {
-        font-size: 14px;
+    .polaroid {
+        width: 45%;
     }
 
-
-    .love-title h2 {
-        font-size: 34px;
+    .polaroid img {
+        height: 220px;
     }
 
-
-    .love-list {
-        padding:
-            25px 30px;
+    .love-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    /* Page 1 hearts */
-
-    .hearts span {
-        font-size: 23px;
+    .special-love {
+        grid-column: auto;
     }
 
-
-    .hearts span:nth-child(1) {
-        left: 8%;
-        top: 18%;
-    }
-
-
-    .hearts span:nth-child(2) {
-        right: 8%;
-        top: 22%;
-    }
-
-
-    .hearts span:nth-child(3) {
-        left: 10%;
-        bottom: 15%;
-    }
-
-
-    .hearts span:nth-child(4) {
-        right: 10%;
-        bottom: 17%;
-    }
 }
 
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+@media (max-width: 600px) {
 
-@media (max-width: 700px) {
-
-    body {
-        overflow: hidden;
-
-        background-position:
-            center center;
+    .eyebrow {
+        letter-spacing: 3px;
+        font-size: 10px;
     }
 
-
-    .page {
-        overflow-y: auto;
-
-        overflow-x: hidden;
-
-        align-items: flex-start;
+    .welcome-content h1 {
+        font-size: 48px;
     }
-
-
-    /* =====================================================
-       PAGE 1
-       ===================================================== */
-
-    .welcome-page {
-        padding:
-            25px 20px;
-
-        margin-top: 40px;
-    }
-
-
-    h1 {
-        font-size: 34px;
-    }
-
-
-    .subtitle {
-        font-size: 14px;
-
-        margin-bottom: 35px;
-    }
-
-
-    /* =====================================================
-       MOBILE PAGE 1 HEARTS
-       ===================================================== */
-
-    .hearts {
-        position: absolute;
-
-        inset: 0;
-
-        width: 100%;
-
-        height: 100%;
-
-        z-index: 1;
-    }
-
-
-    .hearts span {
-        font-size: 21px;
-
-        opacity: 0.7;
-    }
-
-
-    .hearts span:nth-child(1) {
-        left: 7%;
-
-        top: 15%;
-    }
-
-
-    .hearts span:nth-child(2) {
-        right: 7%;
-
-        top: 20%;
-    }
-
-
-    .hearts span:nth-child(3) {
-        left: 9%;
-
-        bottom: 13%;
-    }
-
-
-    .hearts span:nth-child(4) {
-        right: 9%;
-
-        bottom: 15%;
-    }
-
-
-    /* =====================================================
-       MOBILE ENVELOPE
-       ===================================================== */
 
     .envelope {
-        transform:
-            scale(0.85);
+        transform: scale(0.85);
+        margin: -15px 0;
     }
-
-
-    .envelope:hover {
-        transform:
-            scale(0.9);
-    }
-
-
-    /* =====================================================
-       PAGE 2
-       ===================================================== */
-
-    .birthday-page {
-        padding:
-            30px 20px;
-
-        margin-top: 40px;
-    }
-
-
-    .cake {
-        font-size: 70px;
-    }
-
-
-    .birthday-page h1 {
-        font-size: 38px;
-    }
-
-
-    .birthday-text {
-        font-size: 15px;
-
-        line-height: 1.7;
-    }
-
-
-    /* =====================================================
-       PAGE 3
-       ===================================================== */
-
-    .surprise-page {
-        padding:
-            25px 15px;
-
-        margin-top: 40px;
-    }
-
 
     .big-envelope {
-        transform:
-            scale(0.8);
-
-        margin-top: 20px;
+        transform: scale(0.72);
+        margin: -35px 0;
     }
 
-
-    .big-envelope:hover {
-        transform:
-            scale(0.84);
+    .actual-letter {
+        padding: 35px 25px;
     }
 
-/* =========================================================
-   PAGE 4 — BIRTHDAY LETTER
-   ========================================================= */
-
-.letter-page {
-    width: 100%;
-    max-width: 1200px;
-
-    padding: 30px 20px;
-
-    text-align: center;
-
-    position: relative;
-    z-index: 2;
-
-    overflow-y: auto;
-}
-
-
-/* =========================================================
-   BIRTHDAY CARD
-   ========================================================= */
-
-.birthday-card {
-    display: flex;
-
-    width: 950px;
-    max-width: 92vw;
-
-    /*
-    IMPORTANT:
-    Do not use a small fixed height.
-    The card can grow according to the message.
-    */
-
-    min-height: 500px;
-    height: auto;
-
-    margin: 25px auto;
-
-    background:
-        rgba(183, 24, 36, 0.94);
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    position: relative;
-
-    isolation: isolate;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.45);
-
-    backdrop-filter:
-        blur(5px);
-
-    -webkit-backdrop-filter:
-        blur(5px);
-
-    align-items: stretch;
-}
-
-
-/* =========================================================
-   LEFT PHOTO AREA
-   ========================================================= */
-
-.photo-side {
-    flex: 0 0 40%;
-
-    width: 40%;
-
-    min-width: 0;
-
-    min-height: 500px;
-
-    padding: 25px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-
-    background:
-        rgba(232, 178, 167, 0.95);
-
-    overflow: hidden;
-
-    isolation: isolate;
-
-    z-index: 2;
-}
-
-
-/* =========================================================
-   PHOTO FRAME
-   ========================================================= */
-
-.photo-frame {
-    width: 100%;
-    height: 450px;
-
-    max-width: 100%;
-    max-height: 100%;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius: 10px;
-
-    background: #f8e9df;
-
-    transform: rotate(-3deg);
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.25);
-
-    isolation: isolate;
-}
-
-
-/* =========================================================
-   PHOTO
-   ========================================================= */
-
-.photo-frame img,
-.photo-frame > img {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    display: block;
-
-    width: 100% !important;
-    height: 100% !important;
-
-    max-width: 100% !important;
-    max-height: 100% !important;
-
-    object-fit: cover !important;
-
-    object-position: center center;
-
-    border-radius: 10px;
-
-    z-index: 1;
-}
-
-
-/* =========================================================
-   RIGHT MESSAGE AREA
-   ========================================================= */
-
-.message-side {
-    flex: 1 1 60%;
-
-    width: 60%;
-
-    min-width: 0;
-
-    /*
-    Let the message determine the height.
-    */
-
-    min-height: 500px;
-
-    height: auto;
-
-    padding: 45px 45px;
-
-    color: white;
-
-    text-align: center;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    position: relative;
-
-    overflow: visible;
-
-    z-index: 3;
-}
-
-
-/* =========================================================
-   MESSAGE HEADING
-   ========================================================= */
-
-.message-side h2 {
-    font-family: Georgia, serif;
-
-    font-size: 40px;
-
-    line-height: 1.2;
-
-    margin-bottom: 25px;
-
-    font-weight: normal;
-
-    text-shadow:
-        0 3px 8px rgba(0, 0, 0, 0.3);
-}
-
-
-/* =========================================================
-   MAIN MESSAGE
-   ========================================================= */
-
-.message-side p {
-    width: 100%;
-
-    max-width: 600px;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    margin: 0 auto 16px auto;
-
-    /*
-    IMPORTANT:
-    Allows long words/URLs to wrap.
-    */
-
-    overflow-wrap: break-word;
-
-    word-wrap: break-word;
-
-    white-space: normal;
-}
-
-
-/* =========================================================
-   LOVE TEXT
-   ========================================================= */
-
-.message-side .love-text {
-    width: 100%;
-
-    max-width: 600px;
-
-    font-family: Georgia, serif;
-
-    font-size: 21px;
-
-    line-height: 1.6;
-
-    margin-top: 15px;
-
-    overflow-wrap: break-word;
-}
-
-
-/* =========================================================
-   TABLET — PAGE 4
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    .letter-page {
-        padding: 25px 15px;
-    }
-
-    .birthday-card {
-        width: 92vw;
-
-        min-height: 480px;
-
-        max-height: 85vh;
-
-        overflow-y: auto;
-    }
-
-    .photo-side {
-        flex: 0 0 40%;
-
-        width: 40%;
-
-        min-height: 480px;
-
-        padding: 20px;
-    }
-
-    .photo-frame {
-        height: 430px;
-    }
-
-    .message-side {
-        width: 60%;
-
-        min-height: 480px;
-
-        padding: 35px 30px;
-    }
-
-    .message-side h2 {
-        font-size: 34px;
-
-        margin-bottom: 20px;
-    }
-
-    .message-side p {
+    .actual-letter p {
         font-size: 14px;
-
-        line-height: 1.7;
-
-        margin-bottom: 14px;
     }
 
-    .message-side .love-text {
-        font-size: 18px;
-    }
-}
-
-
-/* =========================================================
-   MOBILE — PAGE 4
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    .letter-page {
-        width: 100%;
-
-        padding: 25px 12px;
-
-        margin-top: 10px;
-
-        overflow-y: auto;
-    }
-
-
-    /* -------------------------
-       CARD
-       ------------------------- */
-
-    .birthday-card {
-        display: flex;
-
+    .memory-column {
         flex-direction: column;
-
-        width: 92vw;
-
-        max-width: 450px;
-
-        /*
-        IMPORTANT:
-        Remove fixed height.
-        */
-
-        height: auto;
-
-        min-height: 0;
-
-        max-height: none;
-
-        margin: 20px auto;
-
-        overflow: hidden;
-
-        border-radius: 15px;
-    }
-
-
-    /* -------------------------
-       PHOTO
-       ------------------------- */
-
-    .photo-side {
-        flex: none;
-
-        width: 100%;
-
-        height: 280px;
-
-        min-height: 280px;
-
-        max-height: 280px;
-
-        padding: 20px;
-
-        overflow: hidden;
-    }
-
-
-    .photo-frame {
-        width: 100%;
-
-        height: 240px;
-
-        max-width: 100%;
-
-        max-height: 240px;
-
-        overflow: hidden;
-
-        transform: rotate(-2deg);
-    }
-
-
-    .photo-frame img,
-    .photo-frame > img {
-        width: 100% !important;
-
-        height: 100% !important;
-
-        max-width: 100% !important;
-
-        max-height: 100% !important;
-
-        object-fit: cover !important;
-
-        object-position: center center;
-    }
-
-
-    /* -------------------------
-       MESSAGE
-       ------------------------- */
-
-    .message-side {
-        width: 100%;
-
-        height: auto;
-
-        min-height: 0;
-
-        padding: 35px 25px 40px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: flex-start;
-
-        align-items: center;
-
-        overflow: visible;
-    }
-
-
-    .message-side h2 {
-        width: 100%;
-
-        font-size: 32px;
-
-        line-height: 1.25;
-
-        margin-bottom: 20px;
-    }
-
-
-    .message-side p {
-        width: 100%;
-
-        max-width: 100%;
-
-        font-size: 14px;
-
-        line-height: 1.75;
-
-        margin-bottom: 15px;
-
-        overflow-wrap: anywhere;
-
-        word-break: normal;
-    }
-
-
-    .message-side .love-text {
-        width: 100%;
-
-        font-size: 19px;
-
-        line-height: 1.6;
-
-        margin-top: 10px;
-
-        overflow-wrap: anywhere;
-    }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES — PAGE 4
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-    .letter-page {
-        padding: 20px 10px;
-    }
-
-
-    .birthday-card {
-        width: 94vw;
-    }
-
-
-    .photo-side {
-        height: 240px;
-
-        min-height: 240px;
-
-        max-height: 240px;
-
-        padding: 15px;
-    }
-
-
-    .photo-frame {
-        height: 205px;
-
-        max-height: 205px;
-    }
-
-
-    .photo-frame img,
-    .photo-frame > img {
-        width: 100% !important;
-
-        height: 100% !important;
-
-        max-width: 100% !important;
-
-        max-height: 100% !important;
-
-        object-fit: cover !important;
-    }
-
-
-    .message-side {
-        padding:
-            30px 20px 35px;
-    }
-
-
-    .message-side h2 {
-        font-size: 29px;
-
-        margin-bottom: 18px;
-    }
-
-
-    .message-side p {
-        font-size: 13.5px;
-
-        line-height: 1.7;
-
-        margin-bottom: 14px;
-    }
-
-
-    .message-side .love-text {
-        font-size: 18px;
-    }
-}    /* =====================================================
-       PAGE 5
-       ===================================================== */
-
-    .love-page {
-        padding:
-            25px 15px;
-
-        margin-top: 30px;
-    }
-
-
-    .love-card {
-        flex-direction: column;
-
-        width: 90vw;
-
-        max-width: 450px;
-
-        max-height: 80vh;
-
-        overflow-y: auto;
-
-        overflow-x: hidden;
-    }
-
-
-    .love-title {
-        width: 100%;
-
-        padding: 25px;
-    }
-
-
-    .love-title h2 {
-        font-size: 32px;
-
-        text-align: center;
-    }
-
-
-    .love-list {
-        width: 100%;
-
-        padding:
-            25px;
-
-        overflow: visible;
-    }
-
-
-    .love-list p {
-        font-size: 14px;
-
-        line-height: 1.5;
-
-        margin-bottom: 13px;
-    }
-
-
-    /* =====================================================
-       PAGE 6
-       ===================================================== */
-
-    .final-page {
-        padding:
-            25px 20px;
-
-        min-height: 100vh;
-
         align-items: center;
     }
 
-
-    .final-cake {
-        font-size: 60px;
+    .polaroid {
+        width: 80%;
     }
-
-
-    .final-content h1 {
-        font-size: 48px;
-
-        letter-spacing: 2px;
-    }
-
 
     .final-content h2 {
-        font-size: 15px;
-
-        letter-spacing: 2px;
-    }
-
-
-    .final-message,
-    .final-love {
-        font-size: 15px;
-
-        line-height: 1.6;
-    }
-
-
-    .big-love {
-        font-size: 27px;
-    }
-
-
-    .final-hearts span {
-        font-size: 22px;
-    }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-    .small-text {
         font-size: 11px;
-
-        letter-spacing: 2px;
+        letter-spacing: 3px;
     }
 
-
-    h1 {
-        font-size: 30px;
-    }
-
-
-    .birthday-page h1 {
-        font-size: 34px;
-    }
-
-
-    /* =====================================================
-       VERY SMALL PAGE 1 HEARTS
-       ===================================================== */
-
-    .hearts span {
-        font-size: 18px;
-    }
-
-
-    .hearts span:nth-child(1) {
-        left: 5%;
-
-        top: 14%;
-    }
-
-
-    .hearts span:nth-child(2) {
-        right: 5%;
-
-        top: 19%;
-    }
-
-
-    .hearts span:nth-child(3) {
-        left: 7%;
-
-        bottom: 12%;
-    }
-
-
-    .hearts span:nth-child(4) {
-        right: 7%;
-
-        bottom: 14%;
-    }
-
-
-    /* =====================================================
-       VERY SMALL ENVELOPE
-       ===================================================== */
-
-    .envelope {
-        transform:
-            scale(0.75);
-    }
-
-
-    .envelope:hover {
-        transform:
-            scale(0.78);
-    }
-
-
-    /* =====================================================
-       BIG ENVELOPE
-       ===================================================== */
-
-    .big-envelope {
-        transform:
-            scale(0.68);
-    }
-
-
-    .big-envelope:hover {
-        transform:
-            scale(0.71);
-    }
-
-
-    /* =====================================================
-       BIRTHDAY CARD
-       ===================================================== */
-
-    .birthday-card {
-        width: 92vw;
-    }
-
-
-    .photo-side {
-        height: 240px;
-
-        min-height: 240px;
-
-        max-height: 240px;
-
-        padding: 15px;
-    }
-
-
-    .photo-frame {
-        height: 205px;
-
-        max-height: 205px;
-    }
-
-
-    .photo-frame img,
-    .photo-frame > img {
-        width: 100% !important;
-
-        height: 100% !important;
-
-        max-width: 100% !important;
-
-        max-height: 100% !important;
-
-        object-fit: cover !important;
-    }
-
-
-    .message-side {
-        padding:
-            25px 20px;
-    }
-
-
-    .message-side h2 {
-        font-size: 30px;
-    }
-
-
-    .final-content h1 {
-        font-size: 42px;
-    }
-
-
-    button {
-        padding:
-            13px 22px;
-
-        font-size: 12px;
-    }
-}
-/* =========================================================
-   FINAL FIX — PAGE 4 LONG MESSAGE
-   ========================================================= */
-
-.birthday-card {
-    width: min(950px, 92vw);
-
-    /* Give the card more room */
-    height: min(78vh, 650px);
-
-    min-height: 450px;
-
-    display: flex;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   PHOTO
-   ========================================================= */
-
-.photo-side {
-    flex: 0 0 40%;
-
-    width: 40%;
-
-    height: 100%;
-
-    min-height: 0;
-
-    padding: 20px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    overflow: hidden;
-}
-
-
-.photo-frame {
-    width: 100%;
-
-    height: 100%;
-
-    max-height: 100%;
-
-    overflow: hidden;
-}
-
-
-.photo-frame img,
-.photo-frame > img {
-    width: 100% !important;
-
-    height: 100% !important;
-
-    object-fit: cover !important;
-}
-
-
-/* =========================================================
-   MESSAGE
-   ========================================================= */
-
-.message-side {
-    flex: 1 1 60%;
-
-    width: 60%;
-
-    height: 100%;
-
-    min-height: 0;
-
-    padding: 30px 35px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: flex-start;
-
-    align-items: center;
-
-    /*
-    THIS IS THE IMPORTANT FIX
-    */
-
-    overflow-y: auto;
-
-    overflow-x: hidden;
-
-    scrollbar-width: thin;
-
-    scrollbar-color:
-        rgba(255,255,255,0.5)
-        transparent;
-}
-
-
-/* Chrome / Edge / Safari scrollbar */
-
-.message-side::-webkit-scrollbar {
-    width: 6px;
-}
-
-
-.message-side::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-
-.message-side::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.5);
-
-    border-radius: 10px;
-}
-
-
-/* =========================================================
-   MESSAGE TEXT
-   ========================================================= */
-
-.message-side h2 {
-    flex-shrink: 0;
-
-    font-size: 32px;
-
-    margin-bottom: 20px;
-}
-
-
-.message-side p {
-    width: 100%;
-
-    max-width: 600px;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    margin-bottom: 16px;
-
-    overflow-wrap: break-word;
-
-    word-wrap: break-word;
-
-    white-space: normal;
-
-    flex-shrink: 0;
-}
-
-
-.message-side .love-text {
-    font-size: 17px;
-
-    line-height: 1.55;
-
-    margin-top: 5px;
-
-    padding-bottom: 10px;
-}
-
-
-/* =========================================================
-   PAGE 4 BUTTON
-   ========================================================= */
-
-#nextPageBtn {
-    margin-top: 20px;
-
-    margin-bottom: 10px;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    .birthday-card {
-        width: 92vw;
-
-        height: auto;
-
-        min-height: 0;
-
-        max-height: none;
-
-        flex-direction: column;
-
-        overflow: hidden;
-    }
-
-
-    .photo-side {
-        width: 100%;
-
-        height: 260px;
-
-        min-height: 260px;
-
-        max-height: 260px;
-
-        padding: 15px;
-
-        flex: none;
-    }
-
-
-    .photo-frame {
-        width: 100%;
-
-        height: 230px;
-
-        max-height: 230px;
-    }
-
-
-    .message-side {
-        width: 100%;
-
-        height: 500px;
-
-        min-height: 0;
-
-        padding: 25px 20px 35px;
-
-        overflow-y: auto;
-
-        justify-content: flex-start;
-    }
-
-
-    .message-side h2 {
-        font-size: 28px;
-
-        margin-bottom: 18px;
-    }
-
-
-    .message-side p {
-        font-size: 14px;
-
-        line-height: 1.65;
-
-        margin-bottom: 15px;
-    }
-
-
-    .message-side .love-text {
-        font-size: 17px;
-
-        line-height: 1.55;
-    }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONE
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-    .photo-side {
-        height: 220px;
-
-        min-height: 220px;
-
-        max-height: 220px;
-    }
-
-
-    .photo-frame {
-        height: 195px;
-
-        max-height: 195px;
-    }
-
-
-    .message-side {
-        height: 480px;
-
-        padding: 22px 17px 30px;
-    }
-
-
-    .message-side h2 {
-        font-size: 26px;
-    }
-
-
-    .message-side p {
-        font-size: 13.5px;
-
-        line-height: 1.6;
-    }
-
-
-    .message-side .love-text {
-        font-size: 16px;
-    }
-}
-/* PAGE TRANSITIONS */
-
-.page {
-    display: none;
-}
-
-.page.active {
-    display: flex;
-}
-
-
-/* Page 3 - soft surprise reveal */
-
-#page3.active {
-    animation: surpriseReveal 0.8s ease forwards;
-}
-
-@keyframes surpriseReveal {
-    0% {
-        opacity: 0;
-        transform: scale(0.85);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-
-/* Page 5 - scrapbook slide reveal */
-
-#page5.active {
-    animation: scrapbookReveal 0.9s ease forwards;
-}
-
-@keyframes scrapbookReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(80px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* PAGE 4 - LETTER REVEAL ANIMATION */
-
-#page4.active {
-    animation: letterReveal 1s ease forwards;
-}
-
-@keyframes letterReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(100px) scale(0.9);
-    }
-
-    60% {
-        opacity: 0.7;
-        transform: translateY(-10px) scale(1.02);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
